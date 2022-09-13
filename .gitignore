@@ -1,0 +1,11 @@
+node_modules
+coverage
+src/example-jsm
+dev-bundle
+origin
+db
+build
+build.sh
+dev.sh
+*.blend1
+.DS_Store

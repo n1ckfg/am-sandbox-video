@@ -1,0 +1,25 @@
+{
+  "name": "@artificialmuseum/sandbox",
+  "version": "0.0.1",
+  "description": "artificialmuseum.com sandbox - allows creation of artifacts for the Artificial Museum.",
+  "scripts": {
+    "start": "gss --dir src --cache no -p 8000",
+    "dev": "npm start"
+  },
+  "type": "module",
+  "author": "SystemKollektiv",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@grundstein/gss": "0.0.13"
+  },
+  "contributors": [
+    {
+      "name": "jascha ehrenreich",
+      "github": "jaeh"
+    },
+    {
+      "name": "daniela weiss",
+      "github": "mslitto"
+    }
+  ]
+}
