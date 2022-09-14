@@ -20,7 +20,7 @@ export default {
    */
   sky: '/skybox',
 
-  glb: true,
+  glb: false,
  
   file: 'artifact',
 

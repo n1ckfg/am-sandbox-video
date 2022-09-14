@@ -151,7 +151,7 @@ export default class CustomScene {
     this.longestLayer = -1
     this.currentFrame = 0
 
-    this.light
+    //this.light
   }
 
   beforeLoadModel({ engine, preload }) {
@@ -165,9 +165,9 @@ export default class CustomScene {
       preload.assets.gltf.scene.position.set(0, 2, 2)
       this.model.add(preload.assets.gltf.scene)
       
-      this.light = new AmbientLight(0x808080); 
-      this.light.color.setRGB(0.25, 1.0, 1.0);
-      this.model.add(this.light);
+      //this.light = new AmbientLight(0x808080); 
+      //this.light.color.setRGB(0.25, 1.0, 1.0);
+      //this.model.add(this.light);
     }
 
     this.renderer = engine.renderer
@@ -285,7 +285,7 @@ export default class CustomScene {
   }
 
   tick({ timestamp }) {
-    this.light.intensity = Math.random() + 1.0;
+    //this.light.intensity = Math.random() + 1.0;
 
     const { latk } = this
 
