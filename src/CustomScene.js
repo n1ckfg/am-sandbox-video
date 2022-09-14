@@ -157,7 +157,7 @@ export default class CustomScene {
   beforeLoadModel({ engine, preload }) {
     //const { BufferGeometry, Group, Object3D } = this.THREE
     
-    const { BufferGeometry, Group, Object3D, AmbientLight } = this.THREE
+    const { BufferGeometry, Group, Object3D, AmbientLight, SphereBufferGeometry, VideoTexture, RGBAFormat, NearestFilter, LinearFilter, ShaderMaterial, Points } = this.THREE
     this.model = new Object3D()
     this.model.position.set(0, 0, 0)
 
@@ -183,6 +183,43 @@ export default class CustomScene {
       const line = this.createLayer(layer)
       this.lineGroup.add(line)
     })
+
+    // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+    const geometry = new SphereBufferGeometry(1, 256, 256)
+
+    const video = document.createElement("video")
+    video.crossOrigin = "anonymous"
+    video.setAttribute('crossorigin', 'anonymous')
+    video.setAttribute("webkit-playsinline", "webkit-playsinline")
+    video.setAttribute('playsinline', 'playsinline')
+    video.autoplay = true
+    video.loop = true
+    video.muted = true
+    video.src = "output.mp4"
+    video.play()
+
+    const texture = new VideoTexture(video)
+    texture.format = RGBAFormat
+    texture.minFilter = NearestFilter
+    texture.magFilter = LinearFilter
+    texture.generateMipmaps = false
+
+    const material = new ShaderMaterial({
+      uniforms: {
+        tex: {
+          type: "t",
+          value: texture
+        }
+      },
+      transparent: false,
+      vertexShader: vertShader, //document.getElementById("vertexShader").textContent,
+      fragmentShader: fragShader //document.getElementById("fragmentShader").textContent
+    })
+
+    const mesh = new Points(geometry, material)
+
+    this.model.add(mesh)
   }
 
   createLayer(layer) {
