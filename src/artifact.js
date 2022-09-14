@@ -24,6 +24,7 @@ export default {
  
   file: 'artifact',
 
+  /*
   latk: {
     // starting the file with a / loads it from the sandbox src dir.
     file: '/latk.js',
@@ -34,6 +35,7 @@ export default {
       { mat: { color: 0x00aaff }, pos: [0, 0.05, 0.1] },
     ],
   },
+  */
 
   cam: {
     y: 1.7,

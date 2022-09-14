@@ -129,27 +129,28 @@ void main() {
 }`
 
 export default class CustomScene {
+
   constructor({ artifact, preload, W }) {
     this.W = W
     this.THREE = preload.THREE
 
-    const defaultLayerConfig = [{ mat: { color: 0xff0000 }, pos: [0, 0, 0] }]
+    //const defaultLayerConfig = [{ mat: { color: 0xff0000 }, pos: [0, 0, 0] }]
 
-    const { file = artifact.slug } = artifact.latk
+    //const { file = artifact.slug } = artifact.latk
 
-    const { fps = 12, layers = defaultLayerConfig, reverse = false } = artifact.latk
+    //const { fps = 12, layers = defaultLayerConfig, reverse = false } = artifact.latk
 
-    this.file = file
-    const oneSecond = 1000 //ms
-    this.frameMsInterval = oneSecond / fps
+    //this.file = file
+    //const oneSecond = 1000 //ms
+    //this.frameMsInterval = oneSecond / fps
 
-    this.layers = layers
+    //this.layers = layers
 
-    this.reverse = reverse
+    //this.reverse = reverse
 
     // builtins
-    this.longestLayer = -1
-    this.currentFrame = 0
+    //this.longestLayer = -1
+    //this.currentFrame = 0
 
     //this.light
   }
@@ -175,6 +176,7 @@ export default class CustomScene {
     this.scene = engine.scene
     this.buffer = new BufferGeometry()
     
+    /*
     this.lineGroup = new Group()
     this.lineGroup.scale.set(1, 1, 2)
     this.model.add(this.lineGroup)
@@ -183,6 +185,7 @@ export default class CustomScene {
       const line = this.createLayer(layer)
       this.lineGroup.add(line)
     })
+    */
 
     // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -220,27 +223,12 @@ export default class CustomScene {
     const mesh = new Points(geometry, material)
     const scaler = 2
     mesh.scale.set(scaler, scaler, scaler)
-    mesh.position.set(0, 0, 0)
+    mesh.position.set(-1, 1, 0)
     this.model.add(mesh)
   }
 
-  createLayer(layer) {
-    const { LineBasicMaterial, LineSegments, Vector3 } = this.THREE
-
-    const { mat, pos } = layer
-
-    const lbm = new LineBasicMaterial(mat)
-    const line = new LineSegments(this.buffer, lbm)
-    line.frustumCulled = false
-
-    if (pos) {
-      line.position.add(new Vector3(...pos))
-    }
-
-    return line
-  }
-
   async preload() {
+    /*
     let { file } = this
 
     if (!file.endsWith('.js')) {
@@ -250,9 +238,11 @@ export default class CustomScene {
     if (!file.startsWith('/')) {
       file = `${this.W.STATIC_URL}/latk/${file}`
     }
+    */
 
-    const { latk } = await import(file)
+    //const { latk } = await import(file)
 
+    /*
     latk.forEach(parent => {
       parent.layers.forEach(layer => {
         if (layer.frames.length > this.longestLayer) {
@@ -272,6 +262,7 @@ export default class CustomScene {
     })
 
     this.latk = latk
+    */
   }
 
   point2Vec(co) {
@@ -289,6 +280,7 @@ export default class CustomScene {
   tick({ timestamp }) {
     //this.light.intensity = Math.random() + 1.0;
 
+    /*
     const { latk } = this
 
     if (!latk || !latk.length) {
@@ -327,8 +319,10 @@ export default class CustomScene {
         this.currentFrame = 0
       }
     }
+    */  
   }
 
+  /*
   drawStroke(stroke) {
     const points = []
 
@@ -339,4 +333,5 @@ export default class CustomScene {
 
     return points
   }
+  */
 }
