@@ -218,7 +218,9 @@ export default class CustomScene {
     })
 
     const mesh = new Points(geometry, material)
-
+    const scaler = 2
+    mesh.scale.set(scaler, scaler, scaler)
+    mesh.position.set(0, 0, 0)
     this.model.add(mesh)
   }
 
