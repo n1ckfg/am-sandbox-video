@@ -2,6 +2,9 @@
   "name": "@artificialmuseum/sandbox",
   "version": "0.0.1",
   "description": "artificialmuseum.com sandbox - allows creation of artifacts for the Artificial Museum.",
+  "engines": { 
+    "node": "16.x" 
+  },
   "scripts": {
     "start": "gss --dir src --cache no -p 8000",
     "dev": "npm start"
