@@ -18,6 +18,8 @@ function runGenerator(gen, resolve, reject, next, thrower, key, arg) {
   let generator = function*() {
     let { sandbox: runGenerator } = yield import("./sandbox.js");
     let url = window.location.href;
+    url = url.replace("/#t=1","");
+
     let location = window.location;
 
     if (location.pathname !== "/") {
