@@ -17,10 +17,15 @@ function runGenerator(gen, resolve, reject, next, thrower, key, arg) {
 (function() {
   let generator = function*() {
     let { sandbox: runGenerator } = yield import("./sandbox.js");
-    let url = window.location.href;
-    url = url.replace("/#t=1","");
 
     let location = window.location;
+
+    let url = location.hostname;
+    if (location.hostname === "localhost") {
+    	url = "http://" + url + ":" + location.port;
+    } else {
+		url = "https://" + url;
+    }
 
     if (location.pathname !== "/") {
       let path = location.pathname.slice(1);
