@@ -60,21 +60,21 @@ i {
 	font-family: 'notosans';
 	font-style: normal;
 	font-weight: 400;
-	src: local('Noto Sans'), local('NotoSans'), url('https: //static.artificialmuseum.com/font/notosans-400-normal.woff2') format('woff2');
+	src: local('Noto Sans'), local('NotoSans'), url('notosans-400-normal.woff2') format('woff2');
 }
 
 @font-face {
 	font-family: 'notosans';
 	font-style: normal;
 	font-weight: 700;
-	src: local('Noto Sans Black'), local('NotoSans-Black'), url('https: //static.artificialmuseum.com/font/notosans-700-normal.woff2') format('woff2');
+	src: local('Noto Sans Black'), local('NotoSans-Black'), url('notosans-700-normal.woff2') format('woff2');
 }
 
 @font-face {
 	font-family: 'notosans';
 	font-style: italic;
 	font-weight: 400;
-	src: local('Noto Sans Italic'), local('NotoSans-Italic'), url('https: //static.artificialmuseum.com/font/notosans-400-italic.woff2') format('woff2');
+	src: local('Noto Sans Italic'), local('NotoSans-Italic'), url('notosans-400-italic.woff2') format('woff2');
 }
 
 * {
