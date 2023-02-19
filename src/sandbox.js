@@ -1,1 +1,53 @@
-import{c as t,W as r,s as a,$ as i,_ as o,w as e,T as c}from"./vendor.js";import{Preload as n}from"./Preload.js";var f=function(){var f=t((function*(f){var{artifact:s,file:l,root:d}=f;r.SUPPORTS=yield a();var{XR:R}=r.SUPPORTS,u=i("#show-artifact");if(!s){r.SUPPORTS.WEBP=!1,r.SUPPORTS.WEBM=!1;var{default:p}=yield import("".concat(d,"/").concat(l));s=o(o({},p),{},{city:""})}i.on(u,"click",(r=>{var{artifact:a,map:o,root:e,XR:f=!1}=r;return t((function*(){var t=new n({artifact:a,root:e,THREE:c}),r=i("#show-artifact");r.disabled=!0;try{t._isWorking||(yield t.init({artifact:a,map:o,THREE:c,XR:f}),yield t.startEngine({artifact:a,map:o,THREE:c,XR:f}),r.disabled=!1)}catch(r){r.toString().toLowerCase().includes("error creating webgl context")?t.showWebglDisabledNotification():console.error("onButtonClick: preload.init failed",r)}}))})({artifact:s,root:d,XR:R})),e&&i("a").forEach((t=>{t.removeAttribute("target")}))}));return function(t){return f.apply(this,arguments)}}();export{f as sandbox};
+import { c as createGenerator, W as WebXRSupports, s as fetchData, $ as $, _ as assign, w as wait, T as Three } from "./vendor.js";
+import { Preload as Preload } from "./Preload.js";
+
+let sandbox = function() {
+  let run = createGenerator(function*(options) {
+    let { artifact: artifact, file: file, root: root } = options;
+    WebXRSupports.SUPPORTS = yield fetchData();
+    let { XR: XR } = WebXRSupports.SUPPORTS;
+    let showArtifactButton = $("#show-artifact");
+  
+    if (!artifact) {
+      WebXRSupports.SUPPORTS.WEBP = false;
+      WebXRSupports.SUPPORTS.WEBM = false;
+      let { default: defaultData } = yield import(`${root}/${file}`);
+      artifact = assign(assign({}, defaultData), {}, { city: "" });
+    }
+  
+    $.on(showArtifactButton, "click", function(options) {
+      let { artifact: artifact, map: map, root: root, XR: XR = false } = options;
+      return createGenerator(function*() {
+        let preload = new Preload({ artifact: artifact, root: root, THREE: Three });
+        let showArtifactButton = $("#show-artifact");
+        showArtifactButton.disabled = true;
+        try {
+          if (!preload._isWorking) {
+            yield preload.init({ artifact: artifact, map: map, THREE: Three, XR: XR });
+            yield preload.startEngine({ artifact: artifact, map: map, THREE: Three, XR: XR });
+            showArtifactButton.disabled = false;
+          }
+        } catch (error) {
+          if (error.toString().toLowerCase().includes("error creating webgl context")) {
+            preload.showWebglDisabledNotification();
+          } else {
+            console.error("onButtonClick: preload.init failed", error);
+          }
+        }
+      });
+    }({ artifact: artifact, root: root, XR: XR }));
+  
+    /*
+    if (e) {
+      $("a").forEach(function(element) {
+        element.removeAttribute("target");
+      });
+    }*/
+  });
+  
+  return function(options) {
+    return run.apply(this, arguments);
+  };
+}();
+
+export { sandbox };
