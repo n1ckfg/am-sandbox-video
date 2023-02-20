@@ -1,5 +1,7 @@
 import {$ as e, u as t, v as i, x as a, c as n, y as r, W as o, C as s, S as l, A as d, B as c, P as h, D as m, E as u, F as p, G as f, H as v, I as g, J as y, K as w, a as b, L as S, M as T, N as E, O as x, R as k, Q as C, _ as P, U as A, V as _, X as j, Y as B, w as L, Z as O, a0 as R, a1 as I, a2 as F, a3 as W, a4 as D, a5 as H, a6 as U, a7 as z, a8 as N, a9 as X, aa as G, ab as V, ac as q, ad as Y, ae as K, af as Z, ag as J, ah as Q, ai as $, aj as ee, ak as te, al as ie, am as ae, an as ne, ao as re, ap as oe, aq as se, ar as le, as as de, at as ce, au as he, r as me, av as ue} from "./vendor.js";
+
 class pe {
+
     constructor(n) {
         var {scene: r, sceneInstance: o, renderer: s, endSession: l} = n;
         this.endSession = l,
@@ -13,10 +15,12 @@ class pe {
         a(this),
         this.animToggler = e("#toggle-animation-button")
     }
+
     setCamera(t) {
         this.cameraAccess = t,
         t ? e.show(this.recordVideoButton) : e.hide(this.recordVideoButton)
     }
+
     showAnimToggler(t) {
         this.animToggler && (this.animToggler.classList.remove("play"),
         e.show(this.animToggler),
@@ -28,18 +32,23 @@ class pe {
         ,
         e.on(this.animToggler, "click", this.eventListener)))
     }
+
     hideAnimToggler() {
         e.hide(this.animToggler)
     }
+
     addSession(e) {
         this.session = e
     }
+
     show() {
         e.show(this.gui)
     }
+
     hide() {
         e.hide(this.gui)
     }
+
     onExitButtonClick() {
         var t = this;
         return n((function*() {
@@ -57,23 +66,31 @@ class pe {
         }
         ))()
     }
+
     showHitSearch() {
         e.show(this.hitSearch)
     }
+
     hideHitSearch() {
         e.hide(this.hitSearch)
     }
+
     showElement(t) {
         t.shown || (e.show(t),
         t.shown = !0)
     }
+
     hideElement(t) {
         t.shown && (e.hide(t),
         t.shown = !1)
     }
+
 }
+
 var fe = o.APP_DB.SCENE_TYPES;
+
 class ve {
+
     constructor(e) {
         var {artifact: t, preload: i, XR: a} = e;
         this.XR = a,
@@ -103,6 +120,7 @@ class ve {
         this.toggleAnimations = this.toggleAnimations.bind(this),
         this.endSession = this.endSession.bind(this)
     }
+
     init(t) {
         var i = this;
         return n((function*() {
@@ -251,12 +269,14 @@ class ve {
         }
         ))()
     }
+
     onResize() {
         var {innerWidth: e, innerHeight: t} = o;
         this.camera.aspect = e / t,
         this.camera.updateProjectionMatrix(),
         this.renderer.setSize(e, t)
     }
+
     addLights() {
         var {directionalLightPosition: e=y.directionalPosition} = this.artifact
           , t = new g(y.directionalColor,y.directionalIntensity);
@@ -272,6 +292,7 @@ class ve {
         this.ambientLight = new w(y.ambientColor,y.ambientIntensity),
         this.scene.add(this.ambientLight)
     }
+
     addCustomObjects() {
         var {artifact: e} = this
           , {customObjects: t} = e;
@@ -290,6 +311,7 @@ class ve {
         }
         ))
     }
+
     addShadowPlane() {
         var e = new S(150,150,64,64)
           , t = new T;
@@ -300,6 +322,7 @@ class ve {
         i.position.set(0, .01, 0),
         this.shadowPlane = i
     }
+
     spawnReticle() {
         var e = new k(.15,.2,32).rotateX(-M.PI / 2)
           , t = new C;
@@ -308,6 +331,7 @@ class ve {
         this.reticle.visible = !1,
         this.scene.add(this.reticle)
     }
+
     onAnimationLoop(e, t) {
         var i = e.action._clip.name;
         t.forEach((e=>{
@@ -320,6 +344,7 @@ class ve {
         }
         ))
     }
+
     onAnimationFinished(e, t) {
         var i = e.action._clip.name;
         t.forEach((e=>{
@@ -332,6 +357,7 @@ class ve {
         }
         ))
     }
+
     glow() {
         var {glow: e} = this.artifact;
         this.model.traverse((t=>{
@@ -348,6 +374,7 @@ class ve {
         }
         ))
     }
+
     addClickables() {
         var t = this;
         return n((function*() {
@@ -386,6 +413,7 @@ class ve {
         }
         ))()
     }
+
     onTouch(t) {
         var i = this;
         return n((function*() {
@@ -433,9 +461,11 @@ class ve {
         }
         ))()
     }
+
     nosort() {
         this.renderer.sortObjects = !1
     }
+
     clip() {
         var {model: e, artifact: t} = this
           , {clipSide: i, clipInFallback: a} = t;
@@ -459,6 +489,7 @@ class ve {
         }
         ))
     }
+
     underwaterPlane() {
         var e = this;
         return n((function*() {
@@ -471,6 +502,7 @@ class ve {
         }
         ))()
     }
+
     addSkybox() {
         var e = this;
         return n((function*() {
@@ -497,10 +529,12 @@ class ve {
         }
         ))()
     }
+
     addAudio() {
         this.listener = new H,
         this.camera.add(this.listener)
     }
+
     startMedia() {
         var e = !(arguments.length > 0 && void 0 !== arguments[0]) || arguments[0];
         if (!this.isMediaPlaying) {
@@ -519,6 +553,7 @@ class ve {
             this.isMediaPlaying = !0
         }
     }
+
     stopMedia() {
         var {audioElement: e, preload: t, videoElement: i, actions: a=[], audioElements: n=[]} = this;
         e && e.pause(),
@@ -528,9 +563,11 @@ class ve {
         n.forEach((e=>e.pause())),
         this.isMediaPlaying = !1
     }
+
     toggleAnimations() {
         this.actions.forEach((e=>e.paused = !e.paused))
     }
+
     initFallbackSession() {
         this.XR = !1,
         o.B.classList.add(U);
@@ -565,6 +602,7 @@ class ve {
         this.spawnModel(!0),
         a.domElement.focus()
     }
+
     loadModel() {
         var t = this;
         return n((function*() {
@@ -758,6 +796,7 @@ class ve {
         }
         ))()
     }
+
     findEventTargets(e) {
         var t = [];
         return this.model.traverse((i=>{
@@ -769,6 +808,7 @@ class ve {
         )),
         t
     }
+
     spawnModel(e) {
         var t, {artifact: i, camera: a, controller: n, model: r, reticle: o, scene: s, sceneInstance: l={}, shadowPlane: d, type: c, XR: h} = this, {showSkybox: m, floatSpawnAtZeroY: u=!1} = i;
         if (this.applyPositionAndRotation(),
@@ -818,6 +858,7 @@ class ve {
             ), 8e3)
         }
     }
+
     unspawnModel() {
         var t;
         this.modelSpawned && (this.scene.remove(this.model),
@@ -835,6 +876,7 @@ class ve {
         }
         ), 200))
     }
+
     exitSceneInstance() {
         var e;
         this.customObjects.forEach((e=>{
@@ -860,6 +902,7 @@ class ve {
             engine: this
         })
     }
+
     applyPositionAndRotation() {
         var {artifact: e, model: t} = this;
         if (t) {
@@ -873,6 +916,7 @@ class ve {
             a.z && t.rotateZ(n(a.z))
         }
     }
+
     endSession() {
         var t = this;
         return n((function*() {
@@ -898,9 +942,11 @@ class ve {
         }
         ))()
     }
+
     isHittestScene() {
         return ![fe.Float].includes(this.type)
     }
+
     render(e, t) {
         var i = this;
         return n((function*() {
@@ -929,6 +975,7 @@ class ve {
         }
         ))()
     }
+
     renderPlyMorphTargetInfluences(e) {
         var {delta: t, timestamp: i} = e;
         this.nextMorphTargetStep || (this.nextMorphTargetStep = i + this.morphTargetInfluenceConfig.delay);
@@ -948,6 +995,7 @@ class ve {
         }
         ))
     }
+
     renderCustomObjects(e) {
         this.customObjects.forEach((t=>{
             var {object: i} = t;
@@ -955,6 +1003,7 @@ class ve {
         }
         ))
     }
+
     renderAnimateObjects(e) {
         var {timestamp: t} = e;
         this.animateObjects.forEach((e=>{
@@ -973,6 +1022,7 @@ class ve {
         }
         ))
     }
+
     renderHittest(t) {
         var i = this;
         return n((function*() {
@@ -1004,6 +1054,7 @@ class ve {
         }
         ))()
     }
+
     renderAnimationTimeEvent() {
         this.animationListeners.forEach((e=>{
             var {time: t, action: i, once: a} = e
@@ -1013,6 +1064,7 @@ class ve {
         }
         ))
     }
+
     renderMaterialAnimTick(e) {
         var {delta: t} = e;
         this.materialFadeAnimations.forEach(((e,i)=>{
@@ -1034,12 +1086,15 @@ class ve {
         }
         ))
     }
+    
     renderUnderwater(e) {
         var {delta: t} = e;
         this.cameraPlane.tick(t)
     }
 }
-class ge {
+
+class Preload {
+
     constructor(t) {
         var {artifact: i, root: a, THREE: n} = t;
         this.artifact = i,
@@ -1074,6 +1129,7 @@ class ge {
         this.collectPreloadPromises(),
         this.startEngine = this.startEngine.bind(this)
     }
+
     collectPreloadPromises() {
         var e = {
             skybox: this.loadSkybox()
@@ -1100,6 +1156,7 @@ class ge {
         t && (e.animateObjects = this.loadAnimateObjects()),
         this.promises = e
     }
+
     init() {
         var t = arguments
           , i = this;
@@ -1121,6 +1178,7 @@ class ge {
         }
         ))()
     }
+
     loadScene() {
         var t = this;
         return n((function*() {
@@ -1154,6 +1212,7 @@ class ge {
         }
         ))()
     }
+
     loadSkybox() {
         var e = this;
         return n((function*() {
@@ -1171,6 +1230,7 @@ class ge {
         }
         ))()
     }
+
     loadFonts() {
         var e = this;
         return n((function*() {
@@ -1193,6 +1253,7 @@ class ge {
         }
         ))()
     }
+
     loadAnimateObjects() {
         var e = this;
         return n((function*() {
@@ -1227,6 +1288,7 @@ class ge {
         }
         ))()
     }
+
     loadExamples() {
         var e = this;
         return n((function*() {
@@ -1243,6 +1305,7 @@ class ge {
         }
         ))()
     }
+
     loadCustomMaterials() {
         var e = this;
         return n((function*() {
@@ -1270,6 +1333,7 @@ class ge {
         }
         ))()
     }
+
     loadCustomObjects() {
         var e = this;
         return n((function*() {
@@ -1294,6 +1358,7 @@ class ge {
         }
         ))()
     }
+
     loadVideo(t) {
         var i = this;
         return n((function*() {
@@ -1368,6 +1433,7 @@ class ge {
         }
         ))()
     }
+
     loadAudio() {
         var t = this;
         return n((function*() {
@@ -1408,6 +1474,7 @@ class ge {
         }
         ))()
     }
+
     loadAudioElements() {
         var t = this;
         return n((function*() {
@@ -1458,6 +1525,7 @@ class ge {
         }
         ))()
     }
+
     loadTextures() {
         var e = this;
         return n((function*() {
@@ -1482,6 +1550,7 @@ class ge {
         }
         ))()
     }
+
     loadGltf() {
         var e = this;
         return n((function*() {
@@ -1496,6 +1565,7 @@ class ge {
         }
         ))()
     }
+
     loadPly() {
         var e = this;
         return n((function*() {
@@ -1530,6 +1600,7 @@ class ge {
         }
         ))()
     }
+
     loadGui() {
         var {title: t, button: i, body: a} = this.artifact.gui.afterSpawnModel
           , n = [];
@@ -1558,6 +1629,7 @@ class ge {
             })
         })
     }
+
     promisifiedLoad(e) {
         var {loader: t, file: i} = e;
         return new Promise(((e,a)=>{
@@ -1576,6 +1648,7 @@ class ge {
         }
         ))
     }
+
     startEngine() {
         var t = this;
         return n((function*() {
@@ -1610,12 +1683,14 @@ class ge {
         }
         ))()
     }
+
     showTimeoutWarning() {
         e.show(this._preloadInfo),
         this.isAndroidChrome && (e.show(this._confirmButton),
         this._confirmButton.setAttribute("disabled", !0),
         this._timeoutShown = !0)
     }
+
     confirmButtonClickHandler() {
         var t = this;
         return n((function*() {
@@ -1625,6 +1700,7 @@ class ge {
         }
         ))()
     }
+
     finishLoad() {
         var t = this;
         return n((function*() {
@@ -1649,11 +1725,13 @@ class ge {
         }
         ))()
     }
+
     setError(e, t) {
         console.warn(e, t),
         o.clearTimeout(this.timeout),
         this.finished()
     }
+
     showTooFarNotification(t) {
         var {distance: i, artifact: a, map: n} = t
           , r = "meter"
@@ -1670,12 +1748,14 @@ class ge {
         e.on(this._tooFarCancelButton, "click", this.onTooFarCancelButtonClick),
         e.on(this._tooFarAbortButton, "click", this.onTooFarCancelButtonClick)
     }
+
     onTooFarCancelButtonClick() {
         e.off(this._tooFarPreviewButton, "click", this.onTooFarPreviewButtonClick),
         this._isCancelled = !0,
         e.hide(this._tooFarContainer),
         this.finished()
     }
+
     onTooFarPreviewButtonClick() {
         var t = this;
         return n((function*() {
@@ -1693,17 +1773,20 @@ class ge {
         }
         ))()
     }
+
     showWebglDisabledNotification() {
         e.show(this._webglDisabledContainer),
         e.hide([this._header, this._headerDone, this._preloadInfo, this._cancelButton, this._confirmButton]),
         e.on(this._webglDisabledOkButton, "click", this.onWebglDisabledOkButtonClick)
     }
+
     onWebglDisabledOkButtonClick() {
         e.off(this._webglDisabledOkButton, "click", this.onWebglDisabledOkButtonClick),
         this._isCancelled = !0,
         e.hide(this._webglDisabledContainer),
         this.finished()
     }
+
     finished() {
         this._isWorking = !1,
         this._timeoutShown = !1,
@@ -1719,4 +1802,5 @@ class ge {
         o.clearTimeout(this.timeout)
     }
 }
-export {ge as Preload};
+
+export { Preload };

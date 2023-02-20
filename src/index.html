@@ -125,10 +125,17 @@
 				}
 			};
 
+			let url = window.location.hostname;
+	        if (url === "localhost") {
+	            url = "http://" + url + ":" + window.location.port;
+	        } else {
+	            url = "https://" + url;
+	        }
+
 			window.MAP_URL = 'http://map{s}.localhost:8003';
-			window.GLB_URL = 'http://localhost:8000';
+			window.GLB_URL = url;//'http://localhost:8000';
 			window.STATIC_URL = 'https://static.artificialmuseum.com';
-			window.MEDIA_URL = 'http://localhost:8000';
+			window.MEDIA_URL = url;//'http://localhost:8000';
 			window.ROOT_URL = 'https://staging.artificialmuseum.com';
 		</script>
 		<script type="module" src="/main.js"></script>

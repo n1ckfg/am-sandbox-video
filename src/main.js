@@ -19,12 +19,13 @@ function runGenerator(gen, resolve, reject, next, thrower, key, arg) {
         let { sandbox: runGenerator } = yield import("./sandbox.js");
 
         let location = window.location;
-
+        
+	    //let url = location.href;
         let url = location.hostname;
-        if (location.hostname === "localhost") {
-        	url = "http://" + url + ":" + location.port;
+        if (url === "localhost") {
+            url = "http://" + url + ":" + location.port;
         } else {
-		    url = "https://" + url;
+            url = "https://" + url;
         }
 
         if (location.pathname !== "/") {
