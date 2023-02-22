@@ -37,6 +37,7 @@ export default {
   },
   */
 
+  /*
   cam: {
     y: 1.7,
   },
@@ -48,5 +49,6 @@ export default {
   orbit: {
     max: 15,
   },
+  */
 
 }
