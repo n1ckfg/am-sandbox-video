@@ -163,7 +163,7 @@ export default class CustomScene {
     this.model.position.set(0, 0, 0)
 
     if (preload.assets.gltf) {
-      preload.assets.gltf.scene.position.set(0, 2, 2)
+      preload.assets.gltf.scene.position.set(0, 1, 0)
       this.model.add(preload.assets.gltf.scene)
       
       //this.light = new AmbientLight(0x808080); 
@@ -221,9 +221,9 @@ export default class CustomScene {
     })
 
     const mesh = new Points(geometry, material)
-    const scaler = 2
+    const scaler = 0.5
     mesh.scale.set(scaler, scaler, scaler)
-    mesh.position.set(-1, 1, 0)
+    mesh.position.set(0, 1, 0)
     this.model.add(mesh)
   }
 
